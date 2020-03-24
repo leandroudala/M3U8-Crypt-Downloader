@@ -5,4 +5,5 @@ Atualmente testado nos seguintes serviços:
 - https://hls2.videos.sproutvideo.com
 
 
+## Como usar?
 Em breve, explicação de como utilizar a ferramenta.
