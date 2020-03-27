@@ -64,9 +64,15 @@ for line in response:
 f.close()
 
 # rodando ffmpeg
-saida_filename = "{}.mp4".format(int(round(time.time() * 1000)))
+saida_filename = input('Nome do arquivo: ')
+if len(saida_filename.strip()) < 1:
+    saida_filename = "{}.mp4".format(int(round(time.time() * 1000)))
+elif saida_filename.find('.mp4') < 0:
+    saida_filename = "{}.mp4".format(saida_filename)
 
-comando = 'ffmpeg -y -protocol_whitelist "file,http,https,tcp,tls,crypto" -i {} -c copy -bsf:a aac_adtstoasc {}'.format(temp_filename, saida_filename)
+os.system('title {}'.format(saida_filename))
+
+comando = 'ffmpeg -y -protocol_whitelist "file,http,https,tcp,tls,crypto" -i "{}" -c copy -bsf:a aac_adtstoasc "{}"'.format(temp_filename, saida_filename)
 
 print("Rodando o comando: {}".format(comando))
 os.system(comando)
